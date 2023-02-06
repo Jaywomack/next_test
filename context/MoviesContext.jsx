@@ -5,7 +5,7 @@ export const MoviesContext = createContext();
 const MoviesContextProvider = (props) => {
   const [movies, setMovies] = useState(null);
   return (
-    <MoviesContext.Provider values={{ movies, setMovies }}>
+    <MoviesContext.Provider value={{ movies, setMovies }}>
       {props.children}
     </MoviesContext.Provider>
   );
