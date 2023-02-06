@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
-import styles from '@/styles/Home.module.scss';
-
-const inter = Inter({ subsets: ['latin'] });
+import HeroSection from './components/heroSection/HeroSection';
+import styles from '../styles/Home.module.scss';
 
 export default function Home() {
-  return <>Home</>;
+  return (
+    <div className={styles.container}>
+      <HeroSection />
+    </div>
+  );
 }
