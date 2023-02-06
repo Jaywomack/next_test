@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { MoviesContext } from '@/context/MoviesContext';
+import MovieCard from './components/movieCard/MovieCard';
 import HeroSection from './components/heroSection/HeroSection';
 import styles from '../styles/Home.module.scss';
 
@@ -25,6 +26,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <HeroSection />
+      <div className={styles.cardContainer}>
+        {movies &&
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+      </div>
     </div>
   );
 }
