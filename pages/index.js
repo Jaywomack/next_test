@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useRef } from 'react';
 import { MoviesContext } from '@/context/MoviesContext';
 import MovieCard from './components/movieCard/MovieCard';
 import HeroSection from './components/heroSection/HeroSection';
@@ -6,7 +6,13 @@ import styles from '../styles/Home.module.scss';
 
 export default function Home() {
   const { movies, setMovies } = useContext(MoviesContext);
+  const scrollRef = useRef(null);
 
+  const executeScroll = () =>
+    scrollRef.current.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'nearest',
+    });
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   useEffect(() => {
     if (movies === null) {
@@ -25,7 +31,13 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <HeroSection />
+      <button className={styles.button} onClick={executeScroll}>
+        <HeroSection />
+      </button>
+
+      <h1 ref={scrollRef} className={styles.title}>
+        Top Rated Movies
+      </h1>
       <div className={styles.cardContainer}>
         {movies &&
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
