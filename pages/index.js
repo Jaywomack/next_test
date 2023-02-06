@@ -3,6 +3,7 @@ import { MoviesContext } from '@/context/MoviesContext';
 import MovieCard from './components/movieCard/MovieCard';
 import HeroSection from './components/heroSection/HeroSection';
 import styles from '../styles/Home.module.scss';
+import Head from 'next/head';
 
 export default function Home() {
   const { movies, setMovies } = useContext(MoviesContext);
@@ -31,6 +32,13 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Movie App</title>
+        <meta
+          name='description'
+          content='Movie App create for interview test prompt.'
+        />
+      </Head>
       <button className={styles.button} onClick={executeScroll}>
         <HeroSection />
       </button>
